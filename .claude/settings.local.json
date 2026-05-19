@@ -11,7 +11,9 @@
       "Bash(git commit *)",
       "Bash(git remote *)",
       "Bash(git push *)",
-      "Bash(git pull *)"
+      "Bash(git pull *)",
+      "Bash(npx astro *)",
+      "Bash(npx shadcn@latest *)"
     ]
   }
 }

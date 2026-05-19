@@ -25,7 +25,7 @@ const posts = (await getCollection('blog'))
 					Szkoła Podstawowa w Laskowie to miejsce, gdzie uczniowie rozwijają swoje pasje,
 					zdobywają wiedzę i tworzą przyjaźnie na całe życie.
 				</p>
-				<a href="/blog" class="btn">Zobacz aktualności</a>
+				<a href="/aktualnosci" class="btn">Zobacz aktualności</a>
 			</section>
 
 			<section class="aktualnosci">
@@ -34,7 +34,7 @@ const posts = (await getCollection('blog'))
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/blog/${post.id}/`}>
+								<a href={`/aktualnosci/${post.id}/`}>
 									<span class="data">
 										<FormattedDate date={post.data.pubDate} />
 									</span>
@@ -45,7 +45,7 @@ const posts = (await getCollection('blog'))
 						))
 					}
 				</ul>
-				<a href="/blog" class="wiecej">Wszystkie aktualności →</a>
+				<a href="/aktualnosci" class="wiecej">Wszystkie aktualności →</a>
 			</section>
 		</main>
 		<Footer />
