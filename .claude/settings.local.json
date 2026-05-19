@@ -13,7 +13,12 @@
       "Bash(git push *)",
       "Bash(git pull *)",
       "Bash(npx astro *)",
-      "Bash(npx shadcn@latest *)"
+      "Bash(npx shadcn@latest *)",
+      "Bash(dig szkola-laskowo.pl A +short)",
+      "Bash(dig www.szkola-laskowo.pl CNAME +short)",
+      "Bash(gh api *)",
+      "Bash(gh repo *)",
+      "Bash(gh auth *)"
     ]
   }
 }
