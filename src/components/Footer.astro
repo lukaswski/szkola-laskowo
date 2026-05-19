@@ -1,0 +1,29 @@
+---
+const today = new Date();
+---
+
+<footer>
+	<p>&copy; {today.getFullYear()} Szkoła Podstawowa w Laskowie</p>
+	<p class="kontakt">
+		ul. Szkolna 1, 00-000 Laskowo &nbsp;|&nbsp;
+		<a href="mailto:sekretariat@sp-laskowo.pl">sekretariat@sp-laskowo.pl</a>
+	</p>
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 3em 1em;
+		background: var(--accent-dark);
+		color: rgba(255, 255, 255, 0.75);
+		text-align: center;
+	}
+	footer p {
+		margin: 0.25em 0;
+		font-size: 0.9em;
+	}
+	footer a {
+		color: rgba(255, 255, 255, 0.9);
+	}
+	footer a:hover {
+		color: #fff;
+	}
+</style>
