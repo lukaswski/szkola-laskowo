@@ -5,8 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
-	site: 'https://lukaswski.github.io/szkola-laskowo',
-	base: '/szkola-laskowo',
+	site: 'https://szkola-laskowo.pl',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
