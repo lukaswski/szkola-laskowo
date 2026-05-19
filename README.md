@@ -1,0 +1,2 @@
+# szkola-laskowo
+strona szkoły
