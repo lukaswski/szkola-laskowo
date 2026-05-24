@@ -20,13 +20,78 @@ import HeaderLink from './HeaderLink.astro';
         </div>
       </a>
 
-      <!-- Nav -->
-      <div class="flex items-center gap-1">
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-1">
         <HeaderLink href="/">Strona główna</HeaderLink>
         <HeaderLink href="/aktualnosci">Aktualności</HeaderLink>
         <HeaderLink href="/about">O szkole</HeaderLink>
       </div>
 
+      <!-- Hamburger button (mobile only) -->
+      <button
+        id="menu-toggle"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-school-50 transition-colors gap-[5px]"
+      >
+        <span class="hamburger-line block w-5 h-[2px] bg-school-700 rounded-full transition-all duration-300 origin-center"></span>
+        <span class="hamburger-line block w-5 h-[2px] bg-school-700 rounded-full transition-all duration-300"></span>
+        <span class="hamburger-line block w-5 h-[2px] bg-school-700 rounded-full transition-all duration-300 origin-center"></span>
+      </button>
+
     </nav>
   </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out border-t border-school-100/0"
+  >
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col gap-1">
+      <HeaderLink href="/" class="block w-full text-base py-3 px-4 rounded-xl">Strona główna</HeaderLink>
+      <HeaderLink href="/aktualnosci" class="block w-full text-base py-3 px-4 rounded-xl">Aktualności</HeaderLink>
+      <HeaderLink href="/about" class="block w-full text-base py-3 px-4 rounded-xl">O szkole</HeaderLink>
+    </div>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const lines = toggle.querySelectorAll<HTMLElement>('.hamburger-line');
+
+  function openMenu() {
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    menu.classList.add('border-school-100/60');
+    toggle.setAttribute('aria-expanded', 'true');
+    lines[0].style.transform = 'translateY(7px) rotate(45deg)';
+    lines[1].style.opacity = '0';
+    lines[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+  }
+
+  function closeMenu() {
+    menu.style.maxHeight = '0';
+    menu.classList.remove('border-school-100/60');
+    toggle.setAttribute('aria-expanded', 'false');
+    lines[0].style.transform = '';
+    lines[1].style.opacity = '';
+    lines[2].style.transform = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+  });
+
+  // Close when a link is clicked
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!toggle.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+      closeMenu();
+    }
+  });
+</script>

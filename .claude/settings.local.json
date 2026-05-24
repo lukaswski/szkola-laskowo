@@ -20,5 +20,9 @@
       "Bash(gh repo *)",
       "Bash(gh auth *)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ],
+  "enableAllProjectMcpServers": true
 }
