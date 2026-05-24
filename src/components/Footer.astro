@@ -2,28 +2,63 @@
 const today = new Date();
 ---
 
-<footer>
-	<p>&copy; {today.getFullYear()} Szkoła Podstawowa w Laskowie</p>
-	<p class="kontakt">
-		ul. Szkolna 1, 00-000 Laskowo &nbsp;|&nbsp;
-		<a href="mailto:sekretariat@sp-laskowo.pl">sekretariat@sp-laskowo.pl</a>
-	</p>
+<footer class="bg-school-900 text-white/80">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+    <div class="grid sm:grid-cols-3 gap-10">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-school-500 to-school-700 flex items-center justify-center shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </div>
+          <span class="text-white font-bold text-base">Niepubliczna Szkoła<br/>Podstawowa w Laskowie</span>
+        </div>
+        <p class="text-sm text-white/55 leading-relaxed max-w-[220px]">
+          Publiczna szkoła podstawowa kształcąca uczniów klas I–VIII.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Menu</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/" class="hover:text-white transition-colors">Strona główna</a></li>
+          <li><a href="/aktualnosci" class="hover:text-white transition-colors">Aktualności</a></li>
+          <li><a href="/about" class="hover:text-white transition-colors">O szkole</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">Kontakt</p>
+        <ul class="space-y-2.5 text-sm">
+          <li class="flex items-start gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 text-school-400"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            ul. Szkolna 1, 00-000 Laskowo
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-school-400"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <a href="mailto:sekretariat@sp-laskowo.pl" class="hover:text-white transition-colors">sekretariat@sp-laskowo.pl</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-school-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.8a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.55 5.55l.98-.99a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 15l.92 1.92Z"/></svg>
+            +48 00 000 00 00
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
+      <span>&copy; {today.getFullYear()} Niepubliczna Szkoła Podstawowa w Laskowie</span>
+      <span>pn.–pt. 7:30–15:30</span>
+    </div>
+  </div>
 </footer>
-<style>
-	footer {
-		padding: 2em 1em 3em 1em;
-		background: var(--accent-dark);
-		color: rgba(255, 255, 255, 0.75);
-		text-align: center;
-	}
-	footer p {
-		margin: 0.25em 0;
-		font-size: 0.9em;
-	}
-	footer a {
-		color: rgba(255, 255, 255, 0.9);
-	}
-	footer a:hover {
-		color: #fff;
-	}
-</style>
