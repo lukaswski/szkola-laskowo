@@ -21,7 +21,9 @@
       "Bash(gh auth *)",
       "Bash(xargs cat)",
       "Bash(node *)",
-      "Bash(curl -s http://localhost:4328/)"
+      "Bash(curl -s http://localhost:4328/)",
+      "Bash(curl -s http://localhost:4322/kalendarz-dni-wolnych)",
+      "Bash(curl -s http://localhost:4330/)"
     ]
   },
   "enableAllProjectMcpServers": true,

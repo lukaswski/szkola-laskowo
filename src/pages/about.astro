@@ -1,29 +1,138 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
-import { ABOUT_PAGE, CONTACT } from '../content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { ABOUT_PAGE } from '../content';
+
+const dokumenty = [
+  { nazwa: 'Statut szkoły', file: '/dokumenty/statut.pdf' },
+  { nazwa: 'Regulamin ucznia', file: '/dokumenty/regulamin-ucznia.pdf' },
+  { nazwa: 'Program wychowawczo-profilaktyczny', file: '/dokumenty/program-wychowawczy.pdf' },
+  { nazwa: 'Plan pracy szkoły', file: '/dokumenty/plan-pracy.pdf' },
+  { nazwa: 'Procedury bezpieczeństwa', file: '/dokumenty/procedury-bezpieczenstwa.pdf' },
+  { nazwa: 'Zgoda na przetwarzanie danych (RODO)', file: '/dokumenty/rodo.pdf' },
+];
 ---
 
-<Layout
-  title={ABOUT_PAGE.meta.title}
-  description={ABOUT_PAGE.meta.description}
-  pubDate={new Date('2024-09-01')}
->
-  <p>{ABOUT_PAGE.intro}</p>
+<html lang="pl">
+  <head>
+    <BaseHead title={ABOUT_PAGE.meta.title} description={ABOUT_PAGE.meta.description} />
+  </head>
+  <body>
+    <Header />
 
-  <h2>{ABOUT_PAGE.mission.heading}</h2>
-  <p>{ABOUT_PAGE.mission.body}</p>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
 
-  <h2>{ABOUT_PAGE.staff.heading}</h2>
-  <p>
-    Szkołą kieruje dyrektor <strong>{ABOUT_PAGE.staff.directorName}</strong>. {ABOUT_PAGE.staff.body}
-  </p>
-  <p>Organ prowadzący: {ABOUT_PAGE.organizer}</p>
+      <div class="mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-school-500 mb-2">Rok szkolny 2025/2026</p>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-school-900 leading-tight">{ABOUT_PAGE.meta.title}</h1>
+        <p class="mt-3 text-school-600 max-w-xl">Dokumenty szkolne — statuty, regulaminy i inne materiały do pobrania.</p>
+      </div>
 
-  <h2>{ABOUT_PAGE.contact.heading}</h2>
-  <ul>
-    <li>Adres: {CONTACT.addressLine1}, {CONTACT.addressLine2}</li>
-    <li>Telefon: {CONTACT.phone}</li>
-    <li>E-mail: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
-    <li>Godziny pracy sekretariatu: {CONTACT.hours}</li>
-  </ul>
-</Layout>
+      <!-- TODO: odkomentować gdy dokumenty będą gotowe
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 mb-14" id="doc-grid">
+        {dokumenty.map((d) => (
+          <button
+            data-file={d.file}
+            data-nazwa={d.nazwa}
+            class="doc-btn group text-left rounded-xl border border-school-200 bg-white hover:border-school-400 hover:shadow-md transition-all duration-200 px-4 py-3 flex items-center gap-3"
+          >
+            <div class="w-8 h-8 rounded-lg bg-school-50 group-hover:bg-school-100 flex items-center justify-center shrink-0 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="text-school-600">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-school-900 text-sm leading-tight truncate">{d.nazwa}</div>
+              <div class="text-xs text-school-500 mt-0.5">Dokument PDF</div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-school-400 group-hover:text-school-600 shrink-0 transition-colors">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+        ))}
+      </div>
+      -->
+
+      <div id="pdf-viewer" class="hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h2 id="pdf-title" class="text-xl font-bold text-school-900"></h2>
+          <div class="flex items-center gap-3">
+            <a
+              id="pdf-download"
+              href="#"
+              download
+              class="inline-flex items-center gap-2 text-sm font-semibold text-school-600 hover:text-school-800 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Pobierz PDF
+            </a>
+            <button
+              id="pdf-close"
+              class="inline-flex items-center gap-1.5 text-sm font-semibold text-school-500 hover:text-school-800 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Zamknij
+            </button>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-school-200 bg-school-50">
+          <iframe
+            id="pdf-frame"
+            src=""
+            class="w-full"
+            style="height: 80vh; min-height: 500px;"
+            title="Dokument szkolny"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <Footer />
+  </body>
+</html>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.doc-btn');
+  const viewer = document.getElementById('pdf-viewer')!;
+  const frame = document.getElementById('pdf-frame') as HTMLIFrameElement;
+  const title = document.getElementById('pdf-title')!;
+  const download = document.getElementById('pdf-download') as HTMLAnchorElement;
+  const closeBtn = document.getElementById('pdf-close')!;
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const file = btn.dataset.file!;
+      const nazwa = btn.dataset.nazwa!;
+
+      title.textContent = nazwa;
+      frame.src = file;
+      download.href = file;
+
+      viewer.classList.remove('hidden');
+      viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      buttons.forEach((b) => b.classList.remove('ring-2', 'ring-school-400'));
+      btn.classList.add('ring-2', 'ring-school-400');
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    viewer.classList.add('hidden');
+    frame.src = '';
+    buttons.forEach((b) => b.classList.remove('ring-2', 'ring-school-400'));
+  });
+</script>

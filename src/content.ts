@@ -24,7 +24,8 @@ export const NAV = [
   { label: 'Strona główna', href: '/' },
   { label: 'Aktualności', href: '/aktualnosci' },
   { label: 'Plany lekcji', href: '/plany-lekcji' },
-  { label: 'O szkole', href: '/about' },
+  { label: 'Dni wolne', href: '/kalendarz-dni-wolnych' },
+  { label: 'Dokumenty', href: '/about' },
 ];
 
 // ─── Strona główna ───────────────────────────────────────────────────────────
@@ -38,7 +39,7 @@ export const HOME = {
     subheading:
       'Miejsce, gdzie uczniowie rozwijają pasje, zdobywają wiedzę i tworzą przyjaźnie na całe życie.',
     ctaNews: 'Aktualności',
-    ctaAbout: 'O szkole',
+    ctaAbout: 'Dokumenty',
   },
 
   stats: [
@@ -92,13 +93,13 @@ export const NEWS_PAGE = {
   heading: 'Aktualności',
 };
 
-// ─── Strona: O szkole ────────────────────────────────────────────────────────
+// ─── Strona: Dokumenty ───────────────────────────────────────────────────────
 
 export const ABOUT_PAGE = {
   meta: {
-    title: 'O szkole',
+    title: 'Dokumenty',
     description:
-      'Poznaj Szkołę Podstawową w Laskowie — naszą historię, misję i kadrę pedagogiczną.',
+      'Dokumenty szkolne — statuty, regulaminy i inne materiały do pobrania.',
   },
   intro:
     'Szkoła Podstawowa w Laskowie to publiczna szkoła podstawowa kształcąca uczniów klas I–VIII oraz prowadząca oddział przedszkolny. Nasza placówka działa z myślą o wszechstronnym rozwoju każdego dziecka — zarówno intelektualnym, jak i społecznym oraz fizycznym.',
