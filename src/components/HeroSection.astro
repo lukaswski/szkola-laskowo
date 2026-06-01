@@ -12,15 +12,14 @@ const images = Object.values(mods).map(m => m.default);
 <section class="hero-section">
 
   <!-- ── IMAGE PANEL (right, diagonal clip) ──────────── -->
-  <div class="image-panel">
+  <div class="image-panel anim-fade-in anim-d1">
     {images.map((img, i) => (
       <div class:list={['hero-slide', { active: i === 0 }]}>
         <Image
           src={img}
           alt={`Szkoła Podstawowa w Laskowie — zdjęcie ${i + 1}`}
           width={1200}
-          height={900}
-          class="w-full h-full object-cover object-[center_30%]"
+          class="w-full h-full hero-img"
           loading={i === 0 ? 'eager' : 'lazy'}
         />
       </div>
@@ -44,7 +43,7 @@ const images = Object.values(mods).map(m => m.default);
 
       <!-- top: tylko h1 — na mobile pojawia się nad sliderem -->
       <div class="text-top">
-        <h1>
+        <h1 class="anim-fade-up anim-d2">
           {HOME.hero.headingLine1}<br/>
           <span class="heading-accent">{HOME.hero.headingLine2}</span>
         </h1>
@@ -52,21 +51,21 @@ const images = Object.values(mods).map(m => m.default);
 
       <!-- bottom: badge + opis + CTA — na mobile pod sliderem -->
       <div class="text-bottom">
-        <div class="badge">
+        <div class="badge anim-fade-up anim-d3">
           <span class="badge-dot"></span>
           {HOME.hero.badge}
         </div>
 
-        <p>{HOME.hero.subheading}</p>
+        <p class="anim-fade-up anim-d4">{HOME.hero.subheading}</p>
 
-        <div class="ctas">
-          <a href="/aktualnosci" class="btn-primary">
+        <div class="ctas anim-fade-up anim-d5">
+          <a href="/aktualnosci" class="btn-primary btn-lift btn-shimmer">
             {HOME.hero.ctaNews}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>
           </a>
-          <a href="/about" class="btn-outline">{HOME.hero.ctaAbout}</a>
+          <a href="/about" class="btn-outline btn-lift">{HOME.hero.ctaAbout}</a>
         </div>
       </div>
 
@@ -91,9 +90,12 @@ const images = Object.values(mods).map(m => m.default);
   /* ── Image panel ─────────────────────────────────────── */
   .image-panel {
     position: absolute;
-    inset: 0;
-    /* "/" diagonal: left edge goes from ~42% at top to ~30% at bottom */
-    clip-path: polygon(54% 0, 100% 0, 100% 100%, 44% 100%);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 44%;
+    /* diagonal left edge: from ~18% at top to 0% at bottom (relative to this panel) */
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
     z-index: 0;
   }
 
@@ -105,6 +107,11 @@ const images = Object.values(mods).map(m => m.default);
   }
 
   .hero-slide.active { opacity: 1; }
+
+  .hero-img {
+    object-fit: cover;
+    object-position: center center;
+  }
 
   /* zielonkawy overlay */
   .image-panel::after {
@@ -224,13 +231,13 @@ const images = Object.values(mods).map(m => m.default);
   }
 
   /* CTAs */
-  .ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
 
   .btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
+    padding: 0.625rem 1.75rem;
     border-radius: 0.75rem;
     background: var(--color-school-600);
     color: #fff;
@@ -250,7 +257,7 @@ const images = Object.values(mods).map(m => m.default);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
+    padding: 0.625rem 1.75rem;
     border-radius: 0.75rem;
     border: 2px solid var(--color-school-200);
     color: var(--color-school-700);
@@ -278,8 +285,14 @@ const images = Object.values(mods).map(m => m.default);
       grid-row: 1;
       grid-column: 1;
       position: relative;
+      top: auto; right: auto; bottom: auto; left: auto;
       height: auto;
       clip-path: none;
+    }
+
+    .hero-img {
+      object-fit: cover;
+      object-position: center center;
     }
 
 

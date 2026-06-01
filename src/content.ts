@@ -43,7 +43,7 @@ export const HOME = {
   },
 
   stats: [
-    { value: '40+', label: 'lat tradycji' },
+    { value: '20+', label: 'lat tradycji' },
     { value: '25', label: 'uczniów' },
     { value: '11', label: 'przedszkolaków' },
     { value: '7', label: 'klas' },

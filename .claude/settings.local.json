@@ -23,7 +23,10 @@
       "Bash(node *)",
       "Bash(curl -s http://localhost:4328/)",
       "Bash(curl -s http://localhost:4322/kalendarz-dni-wolnych)",
-      "Bash(curl -s http://localhost:4330/)"
+      "Bash(curl -s http://localhost:4330/)",
+      "Bash(sips *)",
+      "Bash(curl -s http://localhost:4322/)",
+      "Bash(chromium-cli screenshot *)"
     ]
   },
   "enableAllProjectMcpServers": true,

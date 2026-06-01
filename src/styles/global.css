@@ -187,3 +187,122 @@
     border: 0;
   }
 }
+
+/* ── Micro-animations ─────────────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleSpring {
+  0%   { opacity: 0; transform: scale(0.82); }
+  65%  { transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Entrance animations (above-fold / CSS-only) ─────────────────────────── */
+.anim-fade-up   { animation: fadeInUp    0.70s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in   { animation: fadeIn      0.80s ease both; }
+.anim-fade-left { animation: fadeInLeft  0.70s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-scale-in  { animation: scaleSpring 0.60s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+/* Stagger delays */
+.anim-d1 { animation-delay: 0.10s; }
+.anim-d2 { animation-delay: 0.25s; }
+.anim-d3 { animation-delay: 0.42s; }
+.anim-d4 { animation-delay: 0.58s; }
+.anim-d5 { animation-delay: 0.74s; }
+
+/* ── Scroll-reveal (JS adds .visible on IntersectionObserver) ─────────────── */
+/* Only active when JS has loaded — prevents invisible-on-no-JS */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.60s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.60s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js .reveal.visible { opacity: 1; transform: none; }
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.17s; }
+.reveal-d3 { transition-delay: 0.26s; }
+.reveal-d4 { transition-delay: 0.35s; }
+
+/* ── Card hover: lift + shadow ───────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease !important;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px -10px color-mix(in oklch, var(--color-school-600) 16%, transparent) !important;
+}
+
+/* ── Button hover: lift ──────────────────────────────────────────────────── */
+.btn-lift {
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.2s ease,
+              box-shadow 0.18s ease !important;
+}
+.btn-lift:hover { transform: translateY(-3px); }
+.btn-lift:active { transform: translateY(-1px); }
+
+/* ── Icon container: spring on hover ────────────────────────────────────── */
+.icon-bounce {
+  transition: transform 0.40s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.25s ease;
+}
+.icon-bounce:hover {
+  transform: scale(1.18) rotate(-8deg);
+  background: color-mix(in oklch, var(--color-school-200) 80%, transparent);
+}
+
+/* ── CTA / primary button: shimmer sweep on hover ───────────────────────── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  background-position: -250% center;
+  pointer-events: none;
+  transition: background-position 0s;
+}
+.btn-shimmer:hover::after {
+  background-position: 250% center;
+  transition: background-position 0.7s ease;
+}
+
+/* ── Reduced-motion: disable everything ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-fade-in, .anim-fade-left, .anim-scale-in {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .js .reveal, .js .reveal.visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .card-hover, .btn-lift, .icon-bounce { transition: none !important; }
+  .btn-shimmer::after { display: none; }
+}
