@@ -1,5 +1,4 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = 'Niepubliczna Szkoła Podstawowa w Laskowie';
-export const SITE_DESCRIPTION = 'Oficjalna strona Szkoły Podstawowej w Laskowie — aktualności, ogłoszenia i informacje dla rodziców i uczniów.';
+// Re-eksport dla zgodności wstecznej — edytuj treści w src/content.ts
+import { SITE } from './content';
+export const SITE_TITLE = SITE.title;
+export const SITE_DESCRIPTION = SITE.description;

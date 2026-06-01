@@ -18,11 +18,14 @@
       "Bash(dig www.szkola-laskowo.pl CNAME +short)",
       "Bash(gh api *)",
       "Bash(gh repo *)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(xargs cat)",
+      "Bash(node *)",
+      "Bash(curl -s http://localhost:4328/)"
     ]
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "shadcn"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
