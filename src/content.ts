@@ -25,7 +25,7 @@ export const NAV = [
   { label: 'Aktualności', href: '/aktualnosci' },
   { label: 'Plany lekcji', href: '/plany-lekcji' },
   { label: 'Dni wolne', href: '/kalendarz-dni-wolnych' },
-  { label: 'Dokumenty', href: '/about' },
+  { label: 'Dokumenty', href: '/dokumenty' },
 ];
 
 // ─── Strona główna ───────────────────────────────────────────────────────────
@@ -43,7 +43,7 @@ export const HOME = {
   },
 
   stats: [
-    { value: '20+', label: 'lat tradycji' },
+    { value: '30+', label: 'lat tradycji' },
     { value: '25', label: 'uczniów' },
     { value: '11', label: 'przedszkolaków' },
     { value: '7', label: 'klas' },
